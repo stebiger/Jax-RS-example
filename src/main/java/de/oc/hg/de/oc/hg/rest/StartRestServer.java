@@ -12,7 +12,7 @@ public class StartRestServer {
     public static void main(String[] args) throws IOException {
         HttpServer server = HttpServerFactory.create("http://localhost:8080/rest");
         server.start();
-
+        MessageJerseyClient.callService();
         JOptionPane.showMessageDialog(null, "Stop Server");
         server.stop(0);
     }

@@ -11,7 +11,7 @@ public class MessageJerseyClient {
         callService();
     }
 
-    private static void callService() {
+    public static void callService() {
         WebResource service = Client.create().resource("http://localhost:8080/rest");
         System.out.println(service.path("message").accept(MediaType.TEXT_PLAIN).get(String.class));
     }
