@@ -32,6 +32,15 @@ public class MessageResource {
         return info;
     }
 
+    @GET
+    @Path("serverinfoall")
+    @Produces({MediaType.TEXT_XML, MediaType.APPLICATION_JSON})
+    public ServerInfo serverinfoAll() {
+        ServerInfo info = new ServerInfo();
+        info.server = System.getProperty("os.name") + " " + System.getProperty("os.version");
+        return info;
+    }
+
     @XmlRootElement
     static class ServerInfo
     {
