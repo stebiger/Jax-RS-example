@@ -1,9 +1,6 @@
 package de.oc.hg.de.oc.hg.rest;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -61,5 +58,13 @@ public class MessageResource {
     public String message(@PathParam("user") String user,
                           @PathParam("search") String search) {
         return String.format("Benutzer = %s, Suchstring = %s", user, search);
+    }
+
+    @PUT
+    @Path("user/{user}")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String postMessage(@PathParam("user") String user, String message) {
+        return String.format("%s sendet '%s'%n", user, message);
     }
 }

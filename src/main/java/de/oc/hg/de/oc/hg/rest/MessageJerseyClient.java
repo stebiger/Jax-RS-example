@@ -17,14 +17,23 @@ public class MessageJerseyClient {
     }
 
     public static void testPathParams() {
-        WebResource s1 = Client.create().resource( "http://localhost:8080/rest" );
+        WebResource s1 = Client.create().resource("http://localhost:8080/rest");
         WebResource.Builder sb1 = s1.path("message").path("user").path("chris").accept(MediaType.TEXT_PLAIN);
-        System.out.println( sb1.get( String.class ) );
+        System.out.println(sb1.get(String.class));
 
-        WebResource s2 = Client.create().resource( "http://localhost:8080/rest" );
+        WebResource s2 = Client.create().resource("http://localhost:8080/rest");
         WebResource.Builder sb2 = s2.path("message").path("user").path("chris")
                 .path("search").path("kitesurfing")
-                .accept( MediaType.TEXT_PLAIN);
-        System.out.println( sb2.get( String.class ) );
+                .accept(MediaType.TEXT_PLAIN);
+        System.out.println(sb2.get(String.class));
+    }
+
+    public static void testPutMethod() {
+
+        Client create = Client.create();
+        WebResource service = create.resource("http://localhost:8080/rest");
+        System.out.println(service.path("message").path("user").path("chris")
+                .type(MediaType.TEXT_PLAIN)
+                .put(String.class, "Hey Chris"));
     }
 }

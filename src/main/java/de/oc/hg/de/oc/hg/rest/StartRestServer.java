@@ -14,6 +14,7 @@ public class StartRestServer {
         server.start();
         MessageJerseyClient.callService();
         MessageJerseyClient.testPathParams();
+        MessageJerseyClient.testPutMethod();
         JOptionPane.showMessageDialog(null, "Stop Server");
         server.stop(0);
     }
