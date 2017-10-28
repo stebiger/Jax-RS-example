@@ -13,6 +13,7 @@ public class StartRestServer {
         HttpServer server = HttpServerFactory.create("http://localhost:8080/rest");
         server.start();
         MessageJerseyClient.callService();
+        MessageJerseyClient.testPathParams();
         JOptionPane.showMessageDialog(null, "Stop Server");
         server.stop(0);
     }

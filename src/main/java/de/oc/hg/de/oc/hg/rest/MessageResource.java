@@ -2,6 +2,7 @@ package de.oc.hg.de.oc.hg.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -42,8 +43,23 @@ public class MessageResource {
     }
 
     @XmlRootElement
-    static class ServerInfo
-    {
+    static class ServerInfo {
         public String server;
+    }
+
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("user/{user}")
+    public String message(@PathParam("user") String user) {
+        return String.format("Benutzer = %s", user);
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("user/{user}/search/{search}")
+    public String message(@PathParam("user") String user,
+                          @PathParam("search") String search) {
+        return String.format("Benutzer = %s, Suchstring = %s", user, search);
     }
 }
